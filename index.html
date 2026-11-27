@@ -1,207 +1,359 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth dark">
+<html lang="vi" data-theme="dark" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lê Hoàng Quân — Computer Science Student &amp; Tech Enthusiast</title>
+  <title>Lê Hoàng Quân (dmir3r_) — Computer Science @ TDTU | Portfolio v2</title>
+  <meta name="description" content="Portfolio cá nhân của Lê Hoàng Quân (dmir3r_) — Sinh viên Khoa học Máy tính (Computer Science) tại Đại học Tôn Đức Thắng (TDTU). Dự án, Tech Stack, Interactive Shell & Lo-Fi Focus Studio." />
+  <meta name="theme-color" content="#070b14" />
 
+  <!-- Open Graph / Social Share Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dmir3r.is-a.dev/" />
+  <meta property="og:title" content="Lê Hoàng Quân (dmir3r_) — CS Student & Tech Enthusiast" />
+  <meta property="og:description" content="Computer Science Freshman @ TDTU • C/C++, Python, Java, Web Dev • Interactive Terminal & Live Demos." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lê Hoàng Quân (dmir3r_) — Portfolio v2" />
+  <meta name="twitter:description" content="Computer Science @ TDTU • Tech-Minimalist Interactive Portfolio." />
 
-  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+  <!-- Custom Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2310b981'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23070b14'/%3E%3Crect x='3' y='3' width='58' height='58' rx='13' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='monospace' font-weight='800' font-size='26' fill='%2334d399'%3EQl%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Tailwind Custom Configuration -->
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
-          colors: {
-            cyber: {
-              bg: '#090d16',
-              card: '#0f1624',
-              border: '#1e293b',
-            },
-          },
-          keyframes: {
-            blink: {
-              '0%, 100%': { opacity: '1' },
-              '50%': { opacity: '0' },
-            },
-            floatSlow: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-6px)' },
-            },
-            equalizer: {
-              '0%, 100%': { height: '25%' },
-              '50%': { height: '100%' },
-            },
-          },
-          animation: {
-            blink: 'blink 1s step-end infinite',
-            'float-slow': 'floatSlow 5s ease-in-out infinite',
-            eq1: 'equalizer 0.9s ease-in-out infinite',
-            eq2: 'equalizer 0.65s ease-in-out infinite 0.2s',
-            eq3: 'equalizer 1.1s ease-in-out infinite 0.1s',
-            eq4: 'equalizer 0.8s ease-in-out infinite 0.3s',
-          },
         },
       },
     };
   </script>
 
-  <!-- Lucide Icons CDN -->
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body class="bg-[#090d16] text-slate-200 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden relative">
+<body class="font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 overflow-x-hidden relative">
 
   <!-- ===================================================================== -->
-  <!-- AMBIENT BACKGROUND: SUBTLE DOT GRID & RADIAL CYBER GLOWS              -->
+  <!-- SIGNATURE DRAWING INTRO OVERLAY                                       -->
   <!-- ===================================================================== -->
-  <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
-    <!-- Subtle Dot Grid -->
-    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:26px_26px] opacity-40"></div>
-    <!-- Top Left Emerald Glow -->
-    <div class="absolute -top-40 -left-32 w-[28rem] h-[28rem] sm:w-[38rem] sm:h-[38rem] rounded-full bg-emerald-500/10 blur-[120px]"></div>
-    <!-- Top Right Cyan Glow -->
-    <div class="absolute top-24 -right-32 w-[24rem] h-[24rem] sm:w-[34rem] sm:h-[34rem] rounded-full bg-cyan-500/10 blur-[120px]"></div>
-    <!-- Bottom Center Subtle Glow -->
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[30rem] h-[20rem] rounded-full bg-emerald-500/5 blur-[130px]"></div>
+  <div id="signature-intro" class="signature-intro" role="presentation" aria-label="Intro chữ ký Lê Hoàng Quân">
+    <div class="signature-intro-bg" aria-hidden="true"></div>
+    <div class="signature-intro-inner">
+      <svg
+        id="signature-svg"
+        class="signature-svg"
+        viewBox="0 0 826 275"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="sig-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f8fafc" />
+            <stop offset="50%" stop-color="#a7f3d0" />
+            <stop offset="100%" stop-color="#67e8f9" />
+          </linearGradient>
+          <filter id="pen-glow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path
+          id="signature-path"
+          class="signature-path"
+          d="M 245 84 L 256.5 71.5 Q 268 59 275.5 47.5 Q 283 36 283 30.5 Q 283 25 275.5 24.5 Q 268 24 236 37.5 Q 204 51 167 74.5 Q 130 98 99.5 126.5 Q 69 155 56 172 Q 43 189 33.5 209 Q 24 229 24.5 237.5 Q 25 246 29.5 248.5 Q 34 251 60.5 249 Q 87 247 112 238.5 Q 137 230 167.5 216.5 Q 198 203 264 166.5 Q 330 130 341.5 122 Q 353 114 352.5 112 Q 352 110 348 110 Q 344 110 316.5 120.5 Q 289 131 283 135 Q 277 139 277.5 140.5 Q 278 142 288.5 145 Q 299 148 299 152 Q 299 156 290 164.5 Q 281 173 281.5 175.5 Q 282 178 285.5 179.5 Q 289 181 314 181 Q 339 181 362.5 183.5 Q 386 186 392.5 190 Q 399 194 397 199.5 Q 395 205 444 204 Q 493 203 644.5 189 L 802 175"
+          stroke="url(#sig-grad)"
+          stroke-width="5.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <circle
+          id="signature-pen"
+          cx="245"
+          cy="84"
+          r="5"
+          fill="#ffffff"
+          filter="url(#pen-glow)"
+          opacity="0"
+        />
+      </svg>
+      <p id="signature-caption" class="signature-caption font-mono">
+        Lê Hoàng Quân <span class="text-emerald-400">•</span> dmir3r_
+      </p>
+    </div>
+    <button id="signature-skip-btn" type="button" class="signature-skip-btn font-mono">
+      Skip →
+    </button>
+  </div>
+
+  <!-- Scroll Progress Hairline -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Matrix Easter Egg Canvas -->
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===================================================================== -->
+  <!-- AMBIENT BACKGROUND                                                    -->
+  <!-- ===================================================================== -->
+  <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute inset-0 dot-grid-bg"></div>
+    <div class="ambient-glow-1 absolute -top-44 -left-36 w-[30rem] h-[30rem] sm:w-[42rem] sm:h-[42rem] rounded-full bg-emerald-500/10 blur-[130px]"></div>
+    <div class="ambient-glow-2 absolute top-28 -right-36 w-[26rem] h-[26rem] sm:w-[38rem] sm:h-[38rem] rounded-full bg-cyan-500/10 blur-[130px]"></div>
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[34rem] h-[22rem] rounded-full bg-emerald-500/5 blur-[140px]"></div>
   </div>
 
   <!-- ===================================================================== -->
   <!-- STICKY GLASSMORPHISM NAVBAR                                           -->
   <!-- ===================================================================== -->
-  <header class="sticky top-0 z-50 w-full border-b border-slate-800/70 bg-[#090d16]/75 backdrop-blur-xl">
+  <header class="surface-header sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-colors">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <!-- Brand / Logo -->
-        <a href="#top" class="flex items-center gap-2.5 group focus:outline-none">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/40 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:border-emerald-400 transition-all">
+      <div class="flex items-center justify-between h-16 gap-3">
+
+        <!-- Brand -->
+        <a href="#top" class="flex items-center gap-2.5 group focus:outline-none shrink-0">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/40 flex items-center justify-center shadow-[0_0_16px_rgba(16,185,129,0.22)] group-hover:border-emerald-400 transition-all">
             <span class="font-mono font-bold text-sm text-emerald-400">Ql</span>
           </div>
           <div class="flex flex-col">
-            <span class="font-mono text-sm font-semibold tracking-tight text-white group-hover:text-emerald-300 transition-colors">dmir3r_<span class="text-emerald-400 animate-blink">_</span></span>
-            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-widest hidden sm:inline">Portfolio</span>
+            <span class="font-mono text-sm font-semibold tracking-tight text-heading group-hover:text-emerald-400 transition-colors">
+              dmir3r_<span class="text-emerald-400 animate-caret">_</span>
+            </span>
+            <span class="text-[10px] font-mono text-faint-custom uppercase tracking-widest hidden sm:inline">Portfolio v2.0</span>
           </div>
         </a>
 
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 border border-slate-800/80 rounded-full px-2 py-1.5 backdrop-blur-md">
-          <a href="#about" class="px-4 py-1.5 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">Giới thiệu</a>
-          <a href="#skills" class="px-4 py-1.5 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">Kỹ năng</a>
-          <a href="#terminal" class="px-4 py-1.5 rounded-full text-sm font-medium text-slate-300 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all flex items-center gap-1.5">
+        <!-- Desktop Pill Navigation -->
+        <nav class="hidden lg:flex items-center gap-1 surface-elevated border rounded-full px-2 py-1.5 backdrop-blur-md" aria-label="Điều hướng chính">
+          <a href="#about" data-section="about" class="nav-link px-3.5 py-1.5 rounded-full text-xs font-medium" data-i18n="nav.about">Giới thiệu</a>
+          <a href="#skills" data-section="skills" class="nav-link px-3.5 py-1.5 rounded-full text-xs font-medium" data-i18n="nav.skills">Kỹ năng</a>
+          <a href="#projects" data-section="projects" class="nav-link px-3.5 py-1.5 rounded-full text-xs font-medium" data-i18n="nav.projects">Dự án</a>
+          <a href="#terminal" data-section="terminal" class="nav-link px-3.5 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5">
             <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-400"></i>
-            Terminal
+            <span>Terminal</span>
           </a>
-          <a href="#journey" class="px-4 py-1.5 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">Hành trình</a>
-          <a href="#contact" class="px-4 py-1.5 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">Liên hệ</a>
+          <a href="#journey" data-section="journey" class="nav-link px-3.5 py-1.5 rounded-full text-xs font-medium" data-i18n="nav.journey">Hành trình</a>
+          <a href="#contact" data-section="contact" class="nav-link px-3.5 py-1.5 rounded-full text-xs font-medium" data-i18n="nav.contact">Liên hệ</a>
         </nav>
 
-        <!-- Quick Action Button (Desktop) & Mobile Menu Toggle -->
-        <div class="flex items-center gap-2">
-          <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 hover:border-emerald-400/60 transition-all">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Kết nối
-          </a>
-          <button id="mobile-menu-btn" aria-label="Mở menu điều hướng" class="md:hidden p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white hover:border-emerald-500/40 transition-colors">
+        <!-- Utility Controls: Command Palette, Lang, Theme, Mobile Menu -->
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <!-- Command Palette Trigger -->
+          <button
+            id="cmd-palette-btn"
+            type="button"
+            title="Command Palette (Ctrl+K)"
+            class="hidden sm:inline-flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs font-mono surface-elevated border text-muted-custom hover:text-heading hover:border-emerald-500/50 transition-all"
+          >
+            <i data-lucide="search" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span class="hidden md:inline" data-i18n="nav.quick">Tìm nhanh</span>
+            <kbd class="px-1.5 py-0.5 text-[10px] rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">⌘K</kbd>
+          </button>
+
+          <!-- Language Switch -->
+          <button
+            id="lang-toggle-btn"
+            type="button"
+            aria-label="Chuyển ngôn ngữ Việt / Anh"
+            class="px-2.5 py-2 rounded-xl text-xs font-mono font-semibold surface-elevated border text-muted-custom hover:text-emerald-400 hover:border-emerald-500/50 transition-all"
+          >
+            VI
+          </button>
+
+          <!-- Theme Switch -->
+          <button
+            id="theme-toggle-btn"
+            type="button"
+            aria-label="Chuyển chế độ Sáng / Tối"
+            class="p-2 rounded-xl surface-elevated border text-muted-custom hover:text-emerald-400 hover:border-emerald-500/50 transition-all"
+          >
+            <i id="theme-icon-sun" data-lucide="sun" class="w-4 h-4 hidden"></i>
+            <i id="theme-icon-moon" data-lucide="moon" class="w-4 h-4"></i>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            aria-label="Mở menu điều hướng"
+            aria-expanded="false"
+            class="lg:hidden p-2 rounded-xl surface-elevated border text-muted-custom hover:text-heading hover:border-emerald-500/50 transition-all"
+          >
             <i data-lucide="menu" class="w-5 h-5"></i>
           </button>
         </div>
+
       </div>
     </div>
 
     <!-- Mobile Dropdown Navigation -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800/80 bg-[#090d16]/95 backdrop-blur-xl px-4 pt-2 pb-4 space-y-1">
-      <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-800/70 hover:text-emerald-300 transition-colors">Giới thiệu</a>
-      <a href="#skills" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-800/70 hover:text-emerald-300 transition-colors">Kỹ năng</a>
-      <a href="#terminal" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-emerald-300 bg-emerald-500/5 border border-emerald-500/20 hover:bg-emerald-500/10 transition-colors">Terminal Tương Tác</a>
-      <a href="#journey" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-800/70 hover:text-emerald-300 transition-colors">Hành trình</a>
-      <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-800/70 hover:text-emerald-300 transition-colors">Liên hệ</a>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-subtle surface-card-strong backdrop-blur-xl px-4 pt-2 pb-4 space-y-1">
+      <a href="#about" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-body hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors" data-i18n="nav.about">Giới thiệu</a>
+      <a href="#skills" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-body hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors" data-i18n="nav.skills">Kỹ năng</a>
+      <a href="#projects" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-body hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors" data-i18n="nav.projects">Dự án</a>
+      <a href="#terminal" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20">Terminal Tương Tác</a>
+      <a href="#journey" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-body hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors" data-i18n="nav.journey">Hành trình</a>
+      <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-body hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors" data-i18n="nav.contact">Liên hệ</a>
+      <button id="mobile-cmd-btn" type="button" class="w-full mt-2 flex items-center justify-between px-4 py-2.5 rounded-xl text-xs font-mono surface-elevated border text-muted-custom">
+        <span class="flex items-center gap-2"><i data-lucide="search" class="w-3.5 h-3.5 text-emerald-400"></i> Command Palette</span>
+        <kbd class="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400">⌘K</kbd>
+      </button>
     </div>
   </header>
 
   <!-- ===================================================================== -->
   <!-- MAIN CONTAINER                                                        -->
   <!-- ===================================================================== -->
-  <main id="top" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 pb-24 space-y-24 sm:space-y-28">
+  <main id="top" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-24 space-y-24 sm:space-y-28">
 
     <!-- =================================================================== -->
-    <!-- 1. HERO SECTION                                                     -->
+    <!-- 0. HERO SECTION (2-COLUMN WITH 3D INTERACTIVE DEV CARD)             -->
     <!-- =================================================================== -->
-    <section class="relative pt-4 sm:pt-8">
-      <div class="max-w-4xl">
-        <!-- Live Status Pill -->
-        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-mono mb-6 shadow-[0_0_20px_rgba(16,185,129,0.12)]">
-          <span class="relative flex h-2.5 w-2.5">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
-          </span>
-          <span>Computer Science Student • TDTU</span>
+    <section class="relative pt-2 sm:pt-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+
+        <!-- Left Column: Intro & CTAs -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-mono mb-6 shadow-[0_0_20px_rgba(16,185,129,0.12)]">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+            </span>
+            <span data-i18n="hero.badge">Computer Science Student • TDTU K30</span>
+          </div>
+
+          <p class="font-mono text-sm sm:text-base text-cyan-400 mb-2" data-i18n="hero.greeting">Xin chào, mình là</p>
+          <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.08] mb-5">
+            <span class="hero-gradient-name bg-gradient-to-r from-white via-emerald-200 to-cyan-400 bg-clip-text text-transparent">
+              Lê Hoàng Quân
+            </span>
+          </h1>
+
+          <!-- Dynamic Typing Subtitle -->
+          <div class="flex items-center gap-2 text-lg sm:text-2xl font-mono font-medium text-heading min-h-[2.25rem] sm:min-h-[2.5rem] mb-6">
+            <span class="text-emerald-400 select-none">&gt;</span>
+            <span id="typing-text" class="truncate"></span>
+            <span class="inline-block w-2.5 h-6 bg-emerald-400 animate-caret rounded-sm shrink-0"></span>
+          </div>
+
+          <p class="text-muted-custom text-base sm:text-lg leading-relaxed max-w-xl mb-8" data-i18n="hero.lead">
+            Sinh viên năm nhất ngành <strong class="text-heading font-semibold">Khoa học Máy tính (Computer Science)</strong> tại Đại học Tôn Đức Thắng (TDTU). Đam mê thuật toán, phần cứng PC, xây dựng sản phẩm web gọn gàng và bóng rổ 3x3.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="#projects" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-sm sm:text-base bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-semibold shadow-[0_0_25px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(6,182,212,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all">
+              <i data-lucide="folder-git-2" class="w-4 h-4"></i>
+              <span data-i18n="hero.ctaProjects">Xem Dự án</span>
+            </a>
+            <a href="#terminal" class="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-2xl text-sm sm:text-base surface-card border text-heading font-medium hover:border-emerald-500/50 transition-all">
+              <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+              <span data-i18n="hero.ctaTerminal">Mở Terminal</span>
+            </a>
+            <button id="hero-cmd-hint" type="button" class="inline-flex items-center gap-2 px-4 py-3.5 rounded-2xl text-xs sm:text-sm font-mono text-muted-custom hover:text-emerald-400 transition-colors">
+              <span data-i18n="hero.cmdHint">Nhấn</span>
+              <kbd class="px-2 py-0.5 rounded-lg surface-elevated border text-emerald-400">Ctrl+K</kbd>
+            </button>
+          </div>
         </div>
 
-        <!-- Main Heading -->
-        <p class="font-mono text-sm sm:text-base text-cyan-400 mb-2">Xin chào, mình là</p>
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-5">
-          <span class="bg-gradient-to-r from-white via-emerald-200 to-cyan-400 bg-clip-text text-transparent">
-            Lê Hoàng Quân
-          </span>
-        </h1>
+        <!-- Right Column: 3D Interactive Developer Telemetry Card -->
+        <div class="lg:col-span-5 hero-tilt-wrapper">
+          <div id="hero-tilt-card" class="hero-tilt-card surface-card-strong border rounded-3xl p-6 relative overflow-hidden">
+            <!-- Decorative Glow -->
+            <div class="absolute -top-16 -right-16 w-44 h-44 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-16 -left-16 w-44 h-44 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none"></div>
 
-        <!-- Dynamic Typing Subtitle -->
-        <div class="flex items-center gap-2 text-lg sm:text-2xl lg:text-3xl font-mono font-medium text-slate-300 min-h-[2.25rem] sm:min-h-[2.75rem] mb-6">
-          <span class="text-emerald-400 select-none">&gt;</span>
-          <span id="typing-text" class="text-slate-100"></span>
-          <span class="inline-block w-2.5 h-6 sm:h-7 bg-emerald-400 animate-blink rounded-sm"></span>
+            <!-- Card Top Bar -->
+            <div class="flex items-center justify-between gap-3 pb-4 mb-5 border-b border-subtle relative z-10">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-cyan-500/25 border border-emerald-500/40 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                  <span class="font-mono font-bold text-lg text-emerald-400">Ql</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-mono font-bold text-sm text-heading">dmir3r_</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-mono bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">ONLINE</span>
+                  </div>
+                  <p class="font-mono text-xs text-faint-custom">ID: TDTU-CS-K30</p>
+                </div>
+              </div>
+              <span id="hero-status-pill" class="px-2.5 py-1 rounded-xl text-[11px] font-mono surface-elevated border text-cyan-400">
+                ⚡ Active
+              </span>
+            </div>
+
+            <!-- Code-style Profile Spec -->
+            <div class="code-snippet-box font-mono text-[11.5px] sm:text-xs leading-relaxed surface-elevated border rounded-2xl p-3.5 mb-5 relative z-10">
+              <div class="flex items-center gap-1.5 mb-2.5 text-[10px] text-slate-400">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                <span class="ml-1.5">profile.config.ts</span>
+              </div>
+              <pre class="overflow-x-auto custom-scroll text-body"><code><span class="text-cyan-400">const</span> <span class="text-emerald-400">dev</span> = {
+  name:  <span class="text-amber-400">"Lê Hoàng Quân"</span>,
+  uni:   <span class="text-amber-400">"TDTU • CS (2026–)"</span>,
+  stack: [<span class="text-emerald-400">"C/C++"</span>, <span class="text-emerald-400">"Python"</span>, <span class="text-emerald-400">"Java"</span>, <span class="text-emerald-400">"Web"</span>],
+  cert:  <span class="text-amber-400">"IELTS (IDP 2025)"</span>,
+  vibe:  <span class="text-cyan-400">"Code + Hoops + PC DIY"</span>
+};</code></pre>
+            </div>
+
+            <!-- Quick Stat Tiles -->
+            <div class="grid grid-cols-3 gap-2.5 relative z-10 font-mono">
+              <div class="p-3 rounded-2xl surface-elevated border text-center">
+                <span class="block text-lg font-bold text-emerald-400">9+</span>
+                <span class="text-[10px] text-faint-custom uppercase" data-i18n="hero.statTech">Kỹ năng</span>
+              </div>
+              <div class="p-3 rounded-2xl surface-elevated border text-center">
+                <span class="block text-lg font-bold text-cyan-400">K30</span>
+                <span class="text-[10px] text-faint-custom uppercase">TDTU CS</span>
+              </div>
+              <div class="p-3 rounded-2xl surface-elevated border text-center">
+                <span class="block text-lg font-bold text-amber-400">3x3</span>
+                <span class="text-[10px] text-faint-custom uppercase" data-i18n="hero.statHoops">Bóng rổ</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Bio Lead -->
-        <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
-          Sinh viên năm nhất ngành <span class="text-slate-200 font-medium">Khoa học Máy tính (Computer Science)</span> tại Trường Đại học Tôn Đức Thắng (TDTU).
-        </p>
-
-        <!-- Hero Action Buttons -->
-        <div class="flex flex-wrap items-center gap-3.5">
-          <a href="#terminal" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl font-medium text-sm sm:text-base bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-semibold shadow-[0_0_25px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(6,182,212,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all">
-            <i data-lucide="terminal" class="w-4 h-4"></i>
-            Mở Mini Terminal
-          </a>
-          <a href="#about" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl font-medium text-sm sm:text-base bg-slate-900/70 text-slate-200 border border-slate-700/80 hover:border-emerald-500/50 hover:text-white hover:bg-slate-800/80 transition-all">
-            Khám phá tiểu sử
-            <i data-lucide="arrow-down-right" class="w-4 h-4 text-emerald-400"></i>
-          </a>
-        </div>
       </div>
     </section>
 
     <!-- =================================================================== -->
-    <!-- 2. BENTO GRID: GIỚI THIỆU, HỌC VẤN & ĐAM MÊ                         -->
+    <!-- 1. BENTO GRID: PROFILE OVERVIEW & INTERACTIVE ECOSYSTEM             -->
     <!-- =================================================================== -->
-    <section id="about" class="scroll-mt-24 reveal opacity-0 translate-y-6 transition-all duration-700 ease-out">
+    <section id="about" class="scroll-mt-24 reveal-section">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
         <div>
           <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 01. Profile Overview</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Tiểu sử &amp; Hệ sinh thái cá nhân</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold text-heading mt-1" data-i18n="about.title">Tiểu sử &amp; Hệ sinh thái cá nhân</h2>
         </div>
-        <p class="font-mono text-xs text-slate-400">Bento Grid • Tech-Minimalist</p>
+        <p class="font-mono text-xs text-faint-custom">Interactive Bento • v2.0</p>
       </div>
 
-      <!-- Bento Grid Container -->
       <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 sm:gap-5">
 
-        <!-- CARD 1: About Me & Education (Large) -->
-        <div class="bento-card md:col-span-6 lg:col-span-8 p-6 sm:p-7 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-800/80 hover:border-emerald-500/40 hover:shadow-[0_0_30px_-8px_rgba(16,185,129,0.25)] transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
-          <div class="absolute top-0 right-0 w-48 h-48 bg-emerald-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-emerald-500/10 transition-colors"></div>
-
+        <!-- CARD 1: Education & Focus -->
+        <article class="spotlight-card surface-card border md:col-span-6 lg:col-span-8 p-6 sm:p-7 rounded-3xl flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-4 mb-5">
               <div class="flex items-center gap-3">
@@ -209,50 +361,55 @@
                   <i data-lucide="graduation-cap" class="w-5 h-5"></i>
                 </div>
                 <div>
-                  <h3 class="font-bold text-lg text-white">Hồ sơ Học vấn &amp; Định hướng</h3>
+                  <h3 class="font-bold text-lg text-heading" data-i18n="about.eduTitle">Hồ sơ Học vấn &amp; Định hướng</h3>
                   <p class="font-mono text-xs text-emerald-400">TDTU • Computer Science (2026 – Nay)</p>
                 </div>
               </div>
-              <span class="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-slate-800/90 text-cyan-300 border border-slate-700/70">
+              <span class="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-mono surface-elevated text-cyan-400 border">
                 Freshman
               </span>
             </div>
 
-            <p class="text-slate-300 leading-relaxed text-sm sm:text-base mb-5">
-              Hiện tại mình là sinh viên năm nhất chuyên ngành <strong class="text-white">Khoa học Máy tính (Computer Science)</strong> tại <strong class="text-emerald-300">Trường Đại học Tôn Đức Thắng (TDTU)</strong>. Mình tập trung rèn luyện nền tảng vững chắc về thuật toán, cấu trúc dữ liệu, lập trình hệ thống với C/C++, Python, Java và tư duy toán học để xây dựng các sản phẩm phần mềm chất lượng.
+            <p class="text-body leading-relaxed text-sm sm:text-base mb-5" data-i18n="about.eduDesc">
+              Hiện tại mình là sinh viên năm nhất chuyên ngành <strong class="text-heading">Khoa học Máy tính (Computer Science)</strong> tại <strong class="text-emerald-400">Trường Đại học Tôn Đức Thắng (TDTU)</strong>. Mình tập trung rèn luyện nền tảng vững chắc về thuật toán, cấu trúc dữ liệu, lập trình hệ thống với C/C++, Python, Java và tư duy toán học để xây dựng các sản phẩm phần mềm chất lượng.
             </p>
           </div>
 
-          <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800/80">
-            <span class="px-3 py-1 rounded-xl text-xs font-mono bg-slate-800/70 text-slate-300 border border-slate-700/60">#ComputerScience</span>
-            <span class="px-3 py-1 rounded-xl text-xs font-mono bg-slate-800/70 text-slate-300 border border-slate-700/60">#TDTU</span>
-            <span class="px-3 py-1 rounded-xl text-xs font-mono bg-slate-800/70 text-slate-300 border border-slate-700/60">#K30</span>
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-subtle">
+            <span class="px-3 py-1 rounded-xl text-xs font-mono surface-elevated text-body border">#ComputerScience</span>
+            <span class="px-3 py-1 rounded-xl text-xs font-mono surface-elevated text-body border">#TDTU</span>
+            <span class="px-3 py-1 rounded-xl text-xs font-mono surface-elevated text-body border">#K30</span>
           </div>
-        </div>
+        </article>
 
-        <!-- CARD 2: Location & Live Clock (Compact) -->
-        <div class="bento-card md:col-span-6 lg:col-span-4 p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-800/80 hover:border-cyan-500/40 hover:shadow-[0_0_30px_-8px_rgba(6,182,212,0.25)] transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+        <!-- CARD 2: Live Location & Radar Clock -->
+        <article class="spotlight-card surface-card border md:col-span-6 lg:col-span-4 p-6 rounded-3xl flex flex-col justify-between">
           <div class="flex items-center justify-between mb-4">
-            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            <div class="relative w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+              <span class="radar-ring absolute inset-0 rounded-xl border border-cyan-400/50"></span>
+              <i data-lucide="map-pin" class="w-5 h-5 relative z-10"></i>
             </div>
-            <span class="font-mono text-xs text-slate-400 px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/60">GMT+7</span>
+            <span class="font-mono text-xs text-muted-custom px-2.5 py-1 rounded-lg surface-elevated border">GMT+7</span>
           </div>
 
           <div class="my-2">
-            <p class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Vị trí hiện tại</p>
-            <h3 class="text-xl font-bold text-white">TP. Hồ Chí Minh</h3>
-            <p class="text-sm text-slate-400">Việt Nam</p>
+            <p class="text-xs font-mono uppercase tracking-wider text-faint-custom mb-1" data-i18n="about.locLabel">Vị trí hiện tại</p>
+            <h3 class="text-xl font-bold text-heading">TP. Hồ Chí Minh</h3>
+            <p class="text-sm text-muted-custom" data-i18n="about.country">Việt Nam</p>
+            <p id="live-activity" class="mt-2.5 inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Đang code &amp; nghe nhạc</span>
+            </p>
           </div>
 
-          <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between font-mono">
-            <span class="text-xs text-slate-500">10.8231° N, 106.6297° E</span>
-            <span id="live-clock" class="text-sm font-semibold text-cyan-300">--:--:--</span>
+          <div class="mt-4 pt-4 border-t border-subtle flex items-center justify-between font-mono">
+            <span class="text-[11px] text-faint-custom">10.8231° N, 106.6297° E</span>
+            <span id="live-clock" class="text-sm font-semibold text-cyan-400 tabular-nums">--:--:--</span>
           </div>
-        </div>
+        </article>
 
-        <!-- CARD 3: PC Hardware Passion -->
-        <div class="bento-card md:col-span-3 lg:col-span-4 p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-800/80 hover:border-emerald-500/40 hover:shadow-[0_0_30px_-8px_rgba(16,185,129,0.2)] transition-all duration-300 flex flex-col justify-between">
+        <!-- CARD 3: Interactive PC Hardware Spec -->
+        <article class="spotlight-card surface-card border md:col-span-3 lg:col-span-4 p-6 rounded-3xl flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
@@ -260,173 +417,216 @@
               </div>
               <span class="font-mono text-[11px] text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20">DIY Builder</span>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">Phần cứng PC</h3>
-            <p class="text-sm text-slate-400 leading-relaxed mb-4">
-              Tự tìm hiểu kiến trúc phần cứng, tối ưu hiệu năng, tự tay lắp ráp và nâng cấp linh kiện máy tính cá nhân.
+            <h3 class="text-lg font-bold text-heading mb-1.5" data-i18n="about.pcTitle">Phần cứng PC</h3>
+            <p id="hw-detail" class="text-sm text-muted-custom leading-relaxed mb-4 min-h-[3.75rem]" data-i18n="about.pcDesc">
+              Tự tìm hiểu kiến trúc phần cứng, tối ưu airflow/hiệu năng, tự tay lắp ráp và nâng cấp linh kiện máy tính cá nhân.
             </p>
           </div>
 
-          <div class="grid grid-cols-3 gap-2 font-mono text-xs">
-            <div class="p-2 rounded-xl bg-slate-800/70 border border-slate-700/60 text-center">
+          <div class="grid grid-cols-3 gap-2 font-mono text-xs" role="group" aria-label="Chọn linh kiện PC">
+            <button type="button" data-hw="gpu" class="hw-chip p-2 rounded-xl surface-elevated border border-emerald-500/40 text-center hover:border-emerald-400 transition-all">
               <span class="block text-emerald-400 font-semibold">GPU</span>
-              <span class="text-[10px] text-slate-400">Graphics</span>
-            </div>
-            <div class="p-2 rounded-xl bg-slate-800/70 border border-slate-700/60 text-center">
+              <span class="text-[10px] text-faint-custom">Graphics</span>
+            </button>
+            <button type="button" data-hw="ssd" class="hw-chip p-2 rounded-xl surface-elevated border text-center hover:border-cyan-400 transition-all">
               <span class="block text-cyan-400 font-semibold">SSD</span>
-              <span class="text-[10px] text-slate-400">NVMe</span>
-            </div>
-            <div class="p-2 rounded-xl bg-slate-800/70 border border-slate-700/60 text-center">
-              <span class="block text-emerald-300 font-semibold">PSU</span>
-              <span class="text-[10px] text-slate-400">Power</span>
-            </div>
+              <span class="text-[10px] text-faint-custom">NVMe</span>
+            </button>
+            <button type="button" data-hw="psu" class="hw-chip p-2 rounded-xl surface-elevated border text-center hover:border-emerald-400 transition-all">
+              <span class="block text-emerald-400 font-semibold">PSU</span>
+              <span class="text-[10px] text-faint-custom">Power</span>
+            </button>
           </div>
-        </div>
+        </article>
 
-        <!-- CARD 4: Gaming Enthusiast -->
-        <div class="bento-card md:col-span-3 lg:col-span-4 p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-800/80 hover:border-cyan-500/40 hover:shadow-[0_0_30px_-8px_rgba(6,182,212,0.2)] transition-all duration-300 flex flex-col justify-between">
+        <!-- CARD 4: Gaming Loadout -->
+        <article class="spotlight-card surface-card border md:col-span-3 lg:col-span-4 p-6 rounded-3xl flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
                 <i data-lucide="gamepad-2" class="w-5 h-5"></i>
               </div>
-              <span class="font-mono text-[11px] text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-lg border border-cyan-500/20">Action &amp; FPS</span>
+              <a href="https://steamcommunity.com/id/raverdepzai/" target="_blank" rel="noopener noreferrer" class="font-mono text-[11px] text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-lg border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors">
+                Steam ↗
+              </a>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">PC Gaming</h3>
-            <p class="text-sm text-slate-400 leading-relaxed mb-4">
-              Đam mê các tựa game chiến thuật và FPS đòi hỏi phản xạ nhanh.
+            <h3 class="text-lg font-bold text-heading mb-1.5">PC Gaming</h3>
+            <p class="text-sm text-muted-custom leading-relaxed mb-4" data-i18n="about.gameDesc">
+              Đam mê các tựa game chiến thuật, co-op săn quái và FPS đòi hỏi phản xạ nhanh.
             </p>
           </div>
 
           <div class="space-y-2">
-            <div class="flex items-center justify-between px-3 py-1.5 rounded-xl bg-slate-800/70 border border-slate-700/50 text-xs">
-              <span class="text-slate-200 font-medium">League of Legends(TFT)</span>
+            <div class="flex items-center justify-between px-3 py-2 rounded-xl surface-elevated border text-xs">
+              <span class="text-heading font-medium">League of Legends (TFT)</span>
               <span class="font-mono text-[10px] text-amber-400">Tactical</span>
             </div>
-            <div class="flex items-center justify-between px-3 py-1.5 rounded-xl bg-slate-800/70 border border-slate-700/50 text-xs">
-              <span class="text-slate-200 font-medium">Monster Hunter Wilds</span>
+            <div class="flex items-center justify-between px-3 py-2 rounded-xl surface-elevated border text-xs">
+              <span class="text-heading font-medium">Monster Hunter Wilds</span>
               <span class="font-mono text-[10px] text-emerald-400">Co-op Hunt</span>
             </div>
-            <div class="flex items-center justify-between px-3 py-1.5 rounded-xl bg-slate-800/70 border border-slate-700/50 text-xs">
-              <span class="text-slate-200 font-medium">Counter-Strike 2</span>
+            <div class="flex items-center justify-between px-3 py-2 rounded-xl surface-elevated border text-xs">
+              <span class="text-heading font-medium">Counter-Strike 2</span>
               <span class="font-mono text-[10px] text-cyan-400">Tactical FPS</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- CARD 5: Sports & Lifestyle -->
-        <div class="bento-card md:col-span-6 lg:col-span-4 p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-800/80 hover:border-emerald-500/40 hover:shadow-[0_0_30px_-8px_rgba(16,185,129,0.2)] transition-all duration-300 flex flex-col justify-between">
+        <!-- CARD 5: Sports & Interactive Lo-Fi Focus Audio Widget -->
+        <article class="spotlight-card surface-card border md:col-span-6 lg:col-span-4 p-6 rounded-3xl flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                 <i data-lucide="activity" class="w-5 h-5"></i>
               </div>
-              <!-- Mini Animated Music Equalizer -->
-              <div class="flex items-end gap-1 h-4 px-2 py-0.5 rounded-lg bg-slate-800/80 border border-slate-700/50" title="Nghe nhạc thư giãn">
-                <span class="w-0.5 bg-emerald-400 rounded-full animate-eq1"></span>
-                <span class="w-0.5 bg-cyan-400 rounded-full animate-eq2"></span>
-                <span class="w-0.5 bg-emerald-400 rounded-full animate-eq3"></span>
-                <span class="w-0.5 bg-cyan-400 rounded-full animate-eq4"></span>
+              <!-- Live Equalizer -->
+              <div id="audio-equalizer" class="flex items-end gap-1 h-5 px-2.5 py-1 rounded-lg surface-elevated border" aria-label="Âm thanh Lo-Fi">
+                <span class="eq-bar eq-bar-1 bg-emerald-400"></span>
+                <span class="eq-bar eq-bar-2 bg-cyan-400"></span>
+                <span class="eq-bar eq-bar-3 bg-emerald-400"></span>
+                <span class="eq-bar eq-bar-4 bg-cyan-400"></span>
+                <span class="eq-bar eq-bar-5 bg-emerald-400"></span>
               </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">Thể thao &amp; Lối sống</h3>
-            <p class="text-sm text-slate-400 leading-relaxed mb-4">
-              Cân bằng giữa màn hình code và rèn luyện thể chất để duy trì sự tập trung cùng nguồn năng lượng bền bỉ mỗi ngày.
+            <h3 class="text-lg font-bold text-heading mb-1.5" data-i18n="about.lifeTitle">Thể thao &amp; Focus Audio</h3>
+            <p class="text-sm text-muted-custom leading-relaxed mb-4" data-i18n="about.lifeDesc">
+              Cân bằng giữa màn hình code, sân bóng rổ 3x3, cầu lông và một chút nhạc Lo-Fi chill khi học bài.
             </p>
           </div>
-          <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800/80">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/70 border border-slate-700/60 text-xs text-slate-200">
-              <i data-lucide="dumbbell" class="w-3.5 h-3.5 text-emerald-400"></i>
-              Tập luyện thể chất
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/70 border border-slate-700/60 text-xs text-slate-200">
-              <i data-lucide="headphones" class="w-3.5 h-3.5 text-cyan-300"></i>
-              Nghe nhạc Spotify
-            </span>
+
+          <!-- Built-in Web Audio Synth Player -->
+          <div class="p-3 rounded-2xl surface-elevated border space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <div class="min-w-0">
+                <p class="font-mono text-[10px] uppercase tracking-wider text-emerald-400">Focus Synth</p>
+                <p id="audio-track-name" class="text-xs font-semibold text-heading truncate">Midnight Coding Lo-Fi</p>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <button id="audio-mode-btn" type="button" title="Đổi giai điệu" class="px-2 py-1.5 rounded-lg text-[10px] font-mono surface-card border text-muted-custom hover:text-cyan-400 transition-colors">
+                  Mode
+                </button>
+                <button id="audio-play-btn" type="button" aria-label="Phát hoặc dừng nhạc Focus" class="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 flex items-center justify-center transition-all">
+                  <i id="audio-icon-play" data-lucide="play" class="w-3.5 h-3.5"></i>
+                  <i id="audio-icon-pause" data-lucide="pause" class="w-3.5 h-3.5 hidden"></i>
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg surface-card border text-[11px] text-body">
+                🏀 3x3 Basketball
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg surface-card border text-[11px] text-body">
+                🏸 Badminton
+              </span>
+            </div>
           </div>
-        </div>
+        </article>
 
       </div>
     </section>
 
     <!-- =================================================================== -->
-    <!-- 3. TECH STACK & COURSEWORK WITH INTERACTIVE FILTER                  -->
+    <!-- 2. TECH STACK & COURSEWORK WITH COUNT BADGES                        -->
     <!-- =================================================================== -->
-    <section id="skills" class="scroll-mt-24 reveal opacity-0 translate-y-6 transition-all duration-700 ease-out">
+    <section id="skills" class="scroll-mt-24 reveal-section">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8">
         <div>
           <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 02. Tech Stack &amp; Coursework</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Kỹ năng &amp; Nền tảng</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold text-heading mt-1" data-i18n="skills.title">Kỹ năng &amp; Nền tảng</h2>
         </div>
 
-        <!-- Filter Buttons -->
-        <div class="inline-flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800/90 backdrop-blur-md self-start md:self-auto" role="tablist" aria-label="Bộ lọc kỹ năng">
-          <button data-filter="all" class="skill-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-            Tất cả
+        <!-- Filter Tabs -->
+        <div class="inline-flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl surface-card border backdrop-blur-md self-start md:self-auto" role="tablist" aria-label="Bộ lọc kỹ năng">
+          <button data-filter="all" role="tab" aria-selected="true" class="skill-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-emerald-500/15 text-emerald-400 border border-emerald-500/40">
+            <span data-i18n="skills.all">Tất cả</span> <span class="font-mono text-[11px] opacity-75 ml-1">9</span>
           </button>
-          <button data-filter="dev" class="skill-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-400 border border-transparent hover:text-slate-200 hover:bg-slate-800/70">
-            Lập trình
+          <button data-filter="dev" role="tab" aria-selected="false" class="skill-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-muted-custom border border-transparent hover:text-heading">
+            <span data-i18n="skills.dev">Lập trình</span> <span class="font-mono text-[11px] opacity-75 ml-1">5</span>
           </button>
-          <button data-filter="foundations" class="skill-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-400 border border-transparent hover:text-slate-200 hover:bg-slate-800/70">
-            Nền tảng &amp; Công cụ
+          <button data-filter="foundations" role="tab" aria-selected="false" class="skill-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-muted-custom border border-transparent hover:text-heading">
+            <span data-i18n="skills.foundations">Nền tảng</span> <span class="font-mono text-[11px] opacity-75 ml-1">2</span>
+          </button>
+          <button data-filter="tools" role="tab" aria-selected="false" class="skill-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-muted-custom border border-transparent hover:text-heading">
+            <span data-i18n="skills.tools">Công cụ</span> <span class="font-mono text-[11px] opacity-75 ml-1">2</span>
           </button>
         </div>
       </div>
 
-      <!-- Skills Grid (Rendered dynamically via JS for smooth filtering) -->
       <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Populated by JavaScript -->
+        <!-- Rendered by JS -->
       </div>
     </section>
 
     <!-- =================================================================== -->
-    <!-- 4. INTERACTIVE MINI TERMINAL                                        -->
+    <!-- 3. PROJECTS (CHỈNH SỬA & THÊM DỰ ÁN DỄ DÀNG TRONG projects.js)      -->
     <!-- =================================================================== -->
-    <section id="terminal" class="scroll-mt-24 reveal opacity-0 translate-y-6 transition-all duration-700 ease-out">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+    <section id="projects" class="scroll-mt-24 reveal-section">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
         <div>
-          <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 03. Interactive Shell</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Mini Terminal</h2>
+          <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 03. Projects</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-heading mt-1" data-i18n="projects.title">Dự án cá nhân</h2>
         </div>
-        <p class="text-xs sm:text-sm text-slate-400">Bấm lệnh gợi ý hoặc tự gõ để khám phá hồ sơ dưới dạng dòng lệnh.</p>
+        <p class="font-mono text-xs text-faint-custom" data-i18n="projects.subtitle">Quản lý danh sách dự án trong projects.js</p>
       </div>
 
-      <!-- Terminal Window Frame -->
-      <div class="rounded-2xl bg-[#070b13]/95 border border-slate-800/90 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8),0_0_35px_-10px_rgba(16,185,129,0.15)] overflow-hidden backdrop-blur-xl">
-        <!-- Terminal Title Bar -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Rendered automatically from projects.js -->
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 4. SUPERCHARGED INTERACTIVE MINI TERMINAL (LHQ-OS v3.0)             -->
+    <!-- =================================================================== -->
+    <section id="terminal" class="scroll-mt-24 reveal-section">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 04. Interactive Shell</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-heading mt-1">LHQ-OS Mini Terminal</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-muted-custom" data-i18n="terminal.hint">Hỗ trợ Tab tự điền lệnh, ↑/↓ lịch sử, neofetch &amp; matrix easter egg.</p>
+      </div>
+
+      <div class="terminal-shell rounded-3xl bg-[#070b13]/95 border border-slate-800/90 shadow-[0_24px_65px_-18px_rgba(0,0,0,0.85),0_0_35px_-12px_rgba(16,185,129,0.2)] overflow-hidden backdrop-blur-xl text-slate-200">
+        <!-- Title Bar -->
         <div class="flex flex-wrap items-center justify-between gap-2 px-4 py-3 bg-slate-900/90 border-b border-slate-800/90">
           <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
-            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-            <span class="ml-2 font-mono text-xs text-slate-400">dmir3r_: ~ (zsh)</span>
+            <span class="w-3 h-3 rounded-full bg-rose-500/85"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-400/85"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/85"></span>
+            <span class="ml-2 font-mono text-xs text-slate-400">dmir3r_@lhq-os: ~ (zsh)</span>
           </div>
-          <div class="flex items-center gap-1.5 font-mono text-[11px] text-emerald-400/80">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Session Active</span>
+          <div class="flex items-center gap-3 font-mono text-[11px]">
+            <span class="text-slate-500 hidden sm:inline">Tab: Autocomplete</span>
+            <span class="flex items-center gap-1.5 text-emerald-400/90">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              v3.0 Active
+            </span>
           </div>
         </div>
 
-        <!-- Quick Command Suggestion Bar -->
-        <div class="flex flex-wrap items-center gap-2 px-4 py-2.5 bg-slate-900/50 border-b border-slate-800/60">
-          <span class="font-mono text-[11px] text-slate-500 mr-1">Lệnh nhanh:</span>
+        <!-- Quick Command Bar -->
+        <div class="flex flex-wrap items-center gap-2 px-4 py-2.5 bg-slate-900/55 border-b border-slate-800/70">
+          <span class="font-mono text-[11px] text-slate-500 mr-1" data-i18n="terminal.quickLabel">Lệnh nhanh:</span>
+          <button data-cmd="neofetch" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/25 transition-all">neofetch</button>
           <button data-cmd="help" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-slate-800/80 text-slate-300 border border-slate-700/70 hover:border-emerald-500/50 hover:text-emerald-300 transition-all">help</button>
           <button data-cmd="whoami" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-slate-800/80 text-slate-300 border border-slate-700/70 hover:border-emerald-500/50 hover:text-emerald-300 transition-all">whoami</button>
           <button data-cmd="education" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-slate-800/80 text-slate-300 border border-slate-700/70 hover:border-emerald-500/50 hover:text-emerald-300 transition-all">education</button>
+          <button data-cmd="projects" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-slate-800/80 text-slate-300 border border-slate-700/70 hover:border-emerald-500/50 hover:text-emerald-300 transition-all">projects</button>
           <button data-cmd="skills" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-slate-800/80 text-slate-300 border border-slate-700/70 hover:border-emerald-500/50 hover:text-emerald-300 transition-all">skills</button>
-          <button data-cmd="hobbies" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-slate-800/80 text-slate-300 border border-slate-700/70 hover:border-emerald-500/50 hover:text-emerald-300 transition-all">hobbies</button>
+          <button data-cmd="contact" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-slate-800/80 text-slate-300 border border-slate-700/70 hover:border-emerald-500/50 hover:text-emerald-300 transition-all">contact</button>
+          <button data-cmd="matrix" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-cyan-500/10 text-cyan-300 border border-cyan-500/35 hover:bg-cyan-500/20 transition-all">matrix</button>
           <button data-cmd="clear" class="term-chip px-2.5 py-1 rounded-lg font-mono text-xs bg-slate-800/80 text-rose-300 border border-slate-700/70 hover:border-rose-500/50 hover:text-rose-200 transition-all">clear</button>
         </div>
 
-        <!-- Terminal Output Console -->
-        <div id="terminal-body" class="p-4 sm:p-6 font-mono text-xs sm:text-sm h-80 sm:h-96 overflow-y-auto space-y-3 cursor-text">
+        <!-- Console Output -->
+        <div id="terminal-body" class="custom-scroll p-4 sm:p-6 font-mono text-xs sm:text-sm h-80 sm:h-96 overflow-y-auto space-y-3 cursor-text">
           <div class="text-slate-400">
-            <span class="text-emerald-400 font-semibold">LHQ-OS v2.6.0</span> — Hệ thống tiểu sử tương tác của Lê Hoàng Quân.<br />
-            Gõ <span class="text-cyan-300">'help'</span> hoặc nhấn vào các nút lệnh bên trên để bắt đầu.
+            <span class="text-emerald-400 font-semibold">LHQ-OS v3.0.0</span> — Interactive Portfolio Shell của Lê Hoàng Quân.<br />
+            Gõ <span class="text-cyan-300">'help'</span>, <span class="text-emerald-300">'neofetch'</span> hoặc nhấn <span class="text-amber-300">Tab</span> để tự động hoàn thiện lệnh.
           </div>
-          <!-- Dynamic command history outputs appended here -->
+
           <div id="terminal-output" class="space-y-3"></div>
 
-          <!-- Active Input Line -->
           <form id="terminal-form" class="flex items-center gap-2 pt-1">
             <label for="terminal-input" class="shrink-0 flex items-center gap-1 select-none">
               <span class="text-emerald-400 font-semibold">dmir3r_</span><span class="text-slate-500">:</span><span class="text-cyan-400">~</span><span class="text-slate-400">$</span>
@@ -438,8 +638,8 @@
               autocorrect="off"
               autocapitalize="off"
               spellcheck="false"
-              placeholder="Nhập lệnh (vd: whoami, skills, help)..."
-              class="w-full bg-transparent text-slate-100 placeholder-slate-600 focus:outline-none font-mono text-xs sm:text-sm"
+              placeholder="Nhập lệnh (vd: neofetch, projects, matrix, theme)..."
+              class="w-full bg-transparent text-slate-100 placeholder-slate-500 focus:outline-none font-mono text-xs sm:text-sm"
             />
           </form>
         </div>
@@ -449,105 +649,101 @@
     <!-- =================================================================== -->
     <!-- 5. TIMELINE: HÀNH TRÌNH HỌC TẬP                                     -->
     <!-- =================================================================== -->
-    <section id="journey" class="scroll-mt-24 reveal opacity-0 translate-y-6 transition-all duration-700 ease-out">
+    <section id="journey" class="scroll-mt-24 reveal-section">
       <div class="mb-10">
-        <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 04. Milestones</span>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Con đường học vấn</h2>
+        <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 05. Milestones</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-heading mt-1" data-i18n="journey.title">Hành trình học tập</h2>
       </div>
 
-      <!-- Vertical Glowing Timeline -->
-      <div class="relative pl-7 sm:pl-10 space-y-8">
-        <!-- Glowing Vertical Line -->
-        <div class="absolute left-2.5 sm:left-3.5 top-2 bottom-2 w-0.5 bg-gradient-to-b from-emerald-400 via-cyan-500 to-slate-800 shadow-[0_0_12px_rgba(16,185,129,0.5)]"></div>
+      <div class="relative pl-7 sm:pl-10 space-y-7">
+        <div class="absolute left-2.5 sm:left-3.5 top-2 bottom-2 w-0.5 bg-gradient-to-b from-emerald-400 via-cyan-500 to-slate-700/40 shadow-[0_0_12px_rgba(16,185,129,0.45)]"></div>
 
-        <!-- Milestone 1: 2026 - Hiện tại -->
+        <!-- Milestone 1 -->
         <div class="relative group">
-          <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-emerald-400 border-2 border-emerald-200 shadow-[0_0_16px_rgba(16,185,129,0.95)] group-hover:scale-125 transition-transform"></div>
-          <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/70 backdrop-blur-md border border-emerald-500/30 hover:border-emerald-400/60 shadow-[0_0_30px_-12px_rgba(16,185,129,0.2)] transition-all">
+          <div class="absolute -left-[25px] sm:-left-[33px] top-2 w-4 h-4 rounded-full bg-emerald-400 border-2 border-emerald-200 shadow-[0_0_16px_rgba(16,185,129,0.95)] group-hover:scale-125 transition-transform"></div>
+          <div class="spotlight-card surface-card border border-emerald-500/35 p-5 sm:p-6 rounded-3xl">
             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-emerald-300 bg-emerald-500/15 border border-emerald-500/40 px-3 py-1 rounded-full">
+              <span class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-emerald-400 bg-emerald-500/15 border border-emerald-500/35 px-3 py-1 rounded-full">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                2026 – Hiện tại
+                <span data-i18n="journey.m1Date">2026 – Hiện tại</span>
               </span>
-              <span class="font-mono text-[11px] text-emerald-400/80">CURRENT</span>
+              <span class="font-mono text-[11px] text-emerald-400">CURRENT</span>
             </div>
-            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Sinh viên ngành Khoa học Máy tính — Đại học Tôn Đức Thắng (TDTU)</h3>
-            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Chính thức theo học chuyên ngành <span class="text-emerald-300 font-medium">Khoa học Máy tính (Computer Science)</span> tại TDTU. Tập trung chuyên sâu vào lập trình C/C++ (STL), Python, Java, cấu trúc dữ liệu &amp; giải thuật, đại số tuyến tính và mạng máy tính.
+            <h3 class="text-lg sm:text-xl font-bold text-heading mb-2" data-i18n="journey.m1Title">Sinh viên ngành Khoa học Máy tính — Đại học Tôn Đức Thắng (TDTU)</h3>
+            <p class="text-sm sm:text-base text-muted-custom leading-relaxed" data-i18n="journey.m1Desc">
+              Chính thức theo học chuyên ngành <span class="text-emerald-400 font-medium">Khoa học Máy tính (Computer Science)</span> tại TDTU. Tập trung chuyên sâu vào lập trình C/C++ (STL), Python, Java, cấu trúc dữ liệu &amp; giải thuật, đại số tuyến tính và mạng máy tính.
             </p>
           </div>
         </div>
 
-        <!-- Milestone 2: 04/2025 -->
+        <!-- Milestone 2 -->
         <div class="relative group">
-          <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#090d16] border-2 border-cyan-400 shadow-[0_0_14px_rgba(6,182,212,0.8)] group-hover:scale-125 transition-transform"></div>
-          <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-800/80 hover:border-cyan-500/40 transition-all">
+          <div class="absolute -left-[25px] sm:-left-[33px] top-2 w-4 h-4 rounded-full bg-slate-900 border-2 border-cyan-400 shadow-[0_0_14px_rgba(6,182,212,0.8)] group-hover:scale-125 transition-transform"></div>
+          <div class="spotlight-card surface-card border p-5 sm:p-6 rounded-3xl">
             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 rounded-full">
+              <span class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 rounded-full">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i>
                 04/2025
               </span>
-              <span class="font-mono text-[11px] text-slate-500">CERTIFIED</span>
+              <span class="font-mono text-[11px] text-faint-custom">CERTIFIED</span>
             </div>
-            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Hoàn thành chứng chỉ IELTS (IDP Vietnam)</h3>
-            <p class="text-sm sm:text-base text-slate-400 leading-relaxed">
-              Đạt chứng chỉ tiếng Anh học thuật <span class="text-slate-200 font-medium">IELTS tại IDP Vietnam</span>, tạo lợi thế lớn trong việc đọc hiểu tài liệu chuyên ngành, nghiên cứu công nghệ mới và học tập trong môi trường chuẩn quốc tế.
+            <h3 class="text-lg sm:text-xl font-bold text-heading mb-2" data-i18n="journey.m2Title">Hoàn thành chứng chỉ IELTS (IDP Vietnam)</h3>
+            <p class="text-sm sm:text-base text-muted-custom leading-relaxed" data-i18n="journey.m2Desc">
+              Đạt chứng chỉ tiếng Anh học thuật <span class="text-heading font-medium">IELTS tại IDP Vietnam</span>, tạo lợi thế lớn trong việc đọc hiểu tài liệu chuyên ngành, nghiên cứu công nghệ mới và học tập trong môi trường chuẩn quốc tế.
             </p>
           </div>
         </div>
 
-        <!-- Milestone 3: Trước 2026 -->
+        <!-- Milestone 3 -->
         <div class="relative group">
-          <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#090d16] border-2 border-slate-500 group-hover:border-emerald-400 transition-colors"></div>
-          <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/50 backdrop-blur-md border border-slate-800/80 hover:border-slate-700 transition-all">
+          <div class="absolute -left-[25px] sm:-left-[33px] top-2 w-4 h-4 rounded-full bg-slate-900 border-2 border-slate-500 group-hover:border-emerald-400 transition-colors"></div>
+          <div class="spotlight-card surface-card border p-5 sm:p-6 rounded-3xl">
             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="inline-flex items-center gap-1.5 font-mono text-xs font-medium text-slate-300 bg-slate-800/90 border border-slate-700/70 px-3 py-1 rounded-full">
+              <span class="inline-flex items-center gap-1.5 font-mono text-xs font-medium text-body surface-elevated border px-3 py-1 rounded-full">
                 <i data-lucide="cpu" class="w-3.5 h-3.5 text-emerald-400"></i>
-                Trước 2026
+                <span data-i18n="journey.m3Date">Trước 2026</span>
               </span>
-              <span class="font-mono text-[11px] text-slate-500">FOUNDATION</span>
+              <span class="font-mono text-[11px] text-faint-custom">FOUNDATION</span>
             </div>
-            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Hoàn thành khoá đào tạo nhân tài 12 năm của Bộ Giáo dục và Đào tạo</h3>
-            <p class="text-sm sm:text-base text-slate-400 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-bold text-heading mb-2" data-i18n="journey.m3Title">Hoàn thành khoá đào tạo nhân tài 12 năm của Bộ Giáo dục và Đào tạo</h3>
+            <p class="text-sm sm:text-base text-muted-custom leading-relaxed" data-i18n="journey.m3Desc">
               Đạt chuỗi tốt nghiệp và lên lớp liên tục trong vòng 12 năm học tập, đạt "giải khát" trong vòng 3 năm liên tục tham gia đấu trường <span class="text-orange-400 font-medium">3x3 Bóng rổ</span>.
             </p>
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- =================================================================== -->
     <!-- 6. CONTACT & SOCIALS SECTION                                        -->
     <!-- =================================================================== -->
-    <section id="contact" class="scroll-mt-24 reveal opacity-0 translate-y-6 transition-all duration-700 ease-out">
-      <div class="rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-emerald-950/30 border border-slate-800/90 backdrop-blur-xl relative overflow-hidden">
-        <!-- Decorative Corner Glow -->
+    <section id="contact" class="scroll-mt-24 reveal-section">
+      <div class="surface-card-strong border rounded-3xl p-6 sm:p-10 relative overflow-hidden">
         <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10">
           <div class="max-w-xl">
-            <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 05. Connect</span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1 mb-3">Kết nối cùng Hoàng Quân</h2>
-            <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-              Bạn muốn tim một bôn lờ hài hước, một partner tín nhiệm hay đơn giản là tìm đồng đội chơi Liên minh &amp; CS cùng? Đừng ngại nhắn tin hoặc kết nối qua các kênh dưới đây nhé!
+            <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 06. Connect</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-heading mt-1 mb-3" data-i18n="contact.title">Kết nối cùng Hoàng Quân</h2>
+            <p class="text-muted-custom text-sm sm:text-base leading-relaxed" data-i18n="contact.desc">
+              Bạn muốn tìm một đồng đội code có tâm, một người bạn mê build PC, hay đơn giản là rủ đánh Liên Minh &amp; CS2 cùng? Đừng ngại nhắn tin hoặc kết nối qua các kênh dưới đây nhé!
             </p>
           </div>
 
-          <!-- Quick Copy Email Box -->
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-3 rounded-2xl bg-[#090d16]/80 border border-slate-800">
-            <div class="flex items-center gap-3 px-2">
+          <!-- Quick Copy Email Box (Fixed no-wrap button!) -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-3 rounded-2xl surface-elevated border shrink-0">
+            <div class="flex items-center gap-3 px-2 min-w-0">
               <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
                 <i data-lucide="mail" class="w-4 h-4"></i>
               </div>
-              <div>
-                <p class="text-[11px] font-mono text-slate-500">Direct Email</p>
-                <p id="email-text" class="font-mono text-xs sm:text-sm text-slate-200 select-all">lehoangquan2008@gmail.com</p>
+              <div class="min-w-0">
+                <p class="text-[11px] font-mono text-faint-custom">Direct Email</p>
+                <p id="email-text" class="font-mono text-xs sm:text-sm text-heading select-all truncate">lehoangquan2008@gmail.com</p>
               </div>
             </div>
-            <button id="copy-email-btn" type="button" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500 hover:text-slate-950 transition-all active:scale-95">
-              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-              <span>Sao chép</span>
+            <button id="copy-email-btn" type="button" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-semibold whitespace-nowrap shrink-0 bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500 hover:text-slate-950 transition-all active:scale-95">
+              <i data-lucide="copy" class="w-3.5 h-3.5 shrink-0"></i>
+              <span data-i18n="contact.copy">Sao chép</span>
             </button>
           </div>
         </div>
@@ -555,69 +751,69 @@
         <!-- Social Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-8 relative z-10">
           <!-- GitHub -->
-          <a href="https://github.com/quanlehoaq" target="_blank" rel="noopener noreferrer"class="group flex items-center justify-between p-4 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-800/70 transition-all">
+          <a href="https://github.com/quanlehoaq" target="_blank" rel="noopener noreferrer" class="spotlight-card surface-elevated border group flex items-center justify-between p-4 rounded-2xl">
             <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-white group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-colors">
-                <svg class="w-5 h-5 text-slate-200" viewBox="0 0 24 24" fill="currentColor">
+              <div class="w-10 h-10 rounded-xl surface-card border flex items-center justify-center text-heading group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-colors">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
                 </svg>
               </div>
               <div>
-                <h3 class="font-semibold text-sm text-white">GitHub</h3>
-                <p class="font-mono text-xs text-slate-400">@quanlehoaq</p>
+                <h3 class="font-semibold text-sm text-heading">GitHub</h3>
+                <p class="font-mono text-xs text-muted-custom">@quanlehoaq</p>
               </div>
             </div>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-faint-custom group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
           </a>
 
           <!-- Steam -->
-          <a href="https://steamcommunity.com/id/raverdepzai/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-4 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/70 transition-all">
+          <a href="https://steamcommunity.com/id/raverdepzai/" target="_blank" rel="noopener noreferrer" class="spotlight-card surface-elevated border group flex items-center justify-between p-4 rounded-2xl">
             <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-white group-hover:text-cyan-400 group-hover:border-cyan-500/40 transition-colors">
-                <svg class="w-5 h-5 text-slate-200" viewBox="0 0 24 24" fill="currentColor">
+              <div class="w-10 h-10 rounded-xl surface-card border flex items-center justify-center text-heading group-hover:text-cyan-400 group-hover:border-cyan-500/40 transition-colors">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/>
                 </svg>
               </div>
               <div>
-                <h3 class="font-semibold text-sm text-white">Steam</h3>
-                <p class="font-mono text-xs text-slate-400">Dmirer</p>
+                <h3 class="font-semibold text-sm text-heading">Steam</h3>
+                <p class="font-mono text-xs text-muted-custom">Dmirer</p>
               </div>
             </div>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-faint-custom group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
           </a>
 
           <!-- Instagram -->
-          <a href="https://www.instagram.com/hq.quann_/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-4 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-800/70 transition-all">
+          <a href="https://www.instagram.com/hq.quann_/" target="_blank" rel="noopener noreferrer" class="spotlight-card surface-elevated border group flex items-center justify-between p-4 rounded-2xl">
             <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-white group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-colors">
-                <svg class="w-5 h-5 text-slate-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <div class="w-10 h-10 rounded-xl surface-card border flex items-center justify-center text-heading group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-colors">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                   <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                 </svg>
               </div>
               <div>
-                <h3 class="font-semibold text-sm text-white">Insta</h3>
-                <p class="font-mono text-xs text-slate-400">Quân Hoàng</p>
+                <h3 class="font-semibold text-sm text-heading">Instagram</h3>
+                <p class="font-mono text-xs text-muted-custom">@hq.quann_</p>
               </div>
             </div>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-faint-custom group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
           </a>
 
           <!-- Facebook -->
-          <a href="https://www.facebook.com/hpaun0/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-4 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/70 transition-all">
+          <a href="https://www.facebook.com/hpaun0/" target="_blank" rel="noopener noreferrer" class="spotlight-card surface-elevated border group flex items-center justify-between p-4 rounded-2xl">
             <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-white group-hover:text-cyan-400 group-hover:border-cyan-500/40 transition-colors">
-                <svg class="w-5 h-5 text-slate-200" viewBox="0 0 24 24" fill="currentColor">
+              <div class="w-10 h-10 rounded-xl surface-card border flex items-center justify-center text-heading group-hover:text-cyan-400 group-hover:border-cyan-500/40 transition-colors">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                 </svg>
               </div>
               <div>
-                <h3 class="font-semibold text-sm text-white">Facebook</h3>
-                <p class="font-mono text-xs text-slate-400">Quân Hoàng</p>
+                <h3 class="font-semibold text-sm text-heading">Facebook</h3>
+                <p class="font-mono text-xs text-muted-custom">Quân Hoàng</p>
               </div>
             </div>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-faint-custom group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
           </a>
         </div>
       </div>
@@ -628,474 +824,59 @@
   <!-- ===================================================================== -->
   <!-- FOOTER                                                                -->
   <!-- ===================================================================== -->
-  <footer class="border-t border-slate-800/70 bg-[#070a12]/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
-      <p>&copy; 2026 <span class="text-slate-300">Lê Hoàng Quân</span>. Built with Tech-Minimalist vibe.</p>
-      <p class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-500/80"></span>
-        <span>TDTU • Computer Science • TP.HCM</span>
-      </p>
+  <footer class="border-t border-subtle surface-header backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-faint-custom">
+      <p>&copy; 2026 <span class="text-heading font-medium">Lê Hoàng Quân</span> (dmir3r_) • Portfolio v2.0</p>
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          TDTU • Computer Science • TP.HCM
+        </span>
+        <a href="#top" class="inline-flex items-center gap-1 text-emerald-400 hover:underline">
+          <span>Top</span> ↑
+        </a>
+      </div>
     </div>
   </footer>
 
   <!-- ===================================================================== -->
-  <!-- TOAST NOTIFICATION (FOR COPY EMAIL FEEDBACK)                          -->
+  <!-- TOAST NOTIFICATION (TOP-RIGHT BELOW HEADER — NEVER OVERLAPS FOOTER)   -->
   <!-- ===================================================================== -->
-  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300">
-    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-900/95 border border-emerald-500/50 text-emerald-200 shadow-[0_10px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(16,185,129,0.2)] backdrop-blur-xl">
+  <div id="toast" role="status" aria-live="polite" class="fixed top-20 right-4 sm:right-6 z-[65] pointer-events-none opacity-0 -translate-y-3 transition-all duration-300">
+    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl surface-card-strong border border-emerald-500/50 text-heading shadow-[0_12px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl">
       <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0"></i>
       <span id="toast-message" class="text-sm font-medium">Đã sao chép email!</span>
     </div>
   </div>
 
   <!-- ===================================================================== -->
-  <!-- JAVASCRIPT LOGIC: TYPING, SKILLS FILTER, TERMINAL, CLOCK & REVEAL     -->
+  <!-- COMMAND PALETTE MODAL (Ctrl+K / ⌘K)                                   -->
   <!-- ===================================================================== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Initialize Lucide Icons safely
-      try {
-        if (window.lucide) {
-          lucide.createIcons();
-        }
-      } catch (err) {
-        console.error('Icon initialization error:', err);
-      }
+  <div id="cmd-modal" class="hidden fixed inset-0 z-[75] modal-backdrop flex items-start justify-center pt-20 sm:pt-28 px-4" role="dialog" aria-modal="true" aria-labelledby="cmd-title">
+    <div class="w-full max-w-lg surface-card-strong border rounded-3xl overflow-hidden shadow-2xl">
+      <div class="flex items-center gap-3 px-4 py-3.5 border-b border-subtle">
+        <i data-lucide="search" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+        <input
+          id="cmd-search-input"
+          type="text"
+          placeholder="Tìm mục, lệnh hoặc hành động... (vd: theme, demo, github)"
+          class="w-full bg-transparent text-sm text-heading placeholder:text-faint-custom focus:outline-none"
+        />
+        <button id="cmd-close-btn" type="button" class="px-2 py-1 rounded-lg font-mono text-[10px] surface-elevated border text-faint-custom hover:text-heading">ESC</button>
+      </div>
+      <div id="cmd-title" class="sr-only">Command Palette</div>
+      <ul id="cmd-results" class="custom-scroll max-h-72 overflow-y-auto p-2 space-y-1">
+        <!-- Populated by JS -->
+      </ul>
+      <div class="px-4 py-2.5 border-t border-subtle flex items-center justify-between text-[11px] font-mono text-faint-custom">
+        <span>↑↓ di chuyển • Enter chọn</span>
+        <span>dmir3r_ Command</span>
+      </div>
+    </div>
+  </div>
 
-      /* -------------------------------------------------------------------
-       * 1. MOBILE NAVIGATION TOGGLE
-       * ------------------------------------------------------------------- */
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-      if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-        });
-
-        mobileNavLinks.forEach((link) => {
-          link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-          });
-        });
-      }
-
-      /* -------------------------------------------------------------------
-       * 2. HERO TYPING ANIMATION
-       * ------------------------------------------------------------------- */
-      const typingEl = document.getElementById('typing-text');
-      const phrases = [
-        'Sinh viên ngành Khoa học Máy tính',
-        'Bôn lờ số 1 TDT',
-        'Za trưởng top 2 không ai top 1'
-      ];
-      let phraseIdx = 0;
-      let charIdx = 0;
-      let isDeleting = false;
-
-      function typeLoop() {
-        if (!typingEl) return;
-        const currentPhrase = phrases[phraseIdx];
-
-        if (isDeleting) {
-          charIdx--;
-          typingEl.textContent = currentPhrase.substring(0, charIdx);
-        } else {
-          charIdx++;
-          typingEl.textContent = currentPhrase.substring(0, charIdx);
-        }
-
-        let delay = isDeleting ? 40 : 75;
-
-        if (!isDeleting && charIdx === currentPhrase.length) {
-          delay = 1900; // Pause at full phrase
-          isDeleting = true;
-        } else if (isDeleting && charIdx === 0) {
-          isDeleting = false;
-          phraseIdx = (phraseIdx + 1) % phrases.length;
-          delay = 400;
-        }
-
-        setTimeout(typeLoop, delay);
-      }
-      typeLoop();
-
-      /* -------------------------------------------------------------------
-       * 3. REAL-TIME CLOCK FOR HO CHI MINH CITY (GMT+7)
-       * ------------------------------------------------------------------- */
-      const clockEl = document.getElementById('live-clock');
-      function updateClock() {
-        if (!clockEl) return;
-        try {
-          const now = new Date();
-          const formatter = new Intl.DateTimeFormat('vi-VN', {
-            timeZone: 'Asia/Ho_Chi_Minh',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: false,
-          });
-          clockEl.textContent = formatter.format(now);
-        } catch (e) {
-          clockEl.textContent = new Date().toLocaleTimeString('vi-VN');
-        }
-      }
-      updateClock();
-      setInterval(updateClock, 1000);
-
-      /* -------------------------------------------------------------------
-       * 4. TECH STACK & SKILLS FILTERING
-       * ------------------------------------------------------------------- */
-      const skillsData = [
-        {
-          name: 'C',
-          category: 'dev',
-          tag: 'Lập trình',
-          icon: 'terminal',
-          accent: 'emerald',
-          desc: 'level 1.5.'
-        },
-        {
-          name: 'C++ (STL)',
-          category: 'dev',
-          tag: 'Lập trình',
-          icon: 'code-2',
-          accent: 'cyan',
-          desc: 'level 0.5.'
-        },
-        {
-          name: 'Python (NumPy)',
-          category: 'dev',
-          tag: 'Lập trình',
-          icon: 'braces',
-          accent: 'emerald',
-          desc: 'level 1.0.'
-        },
-        {
-          name: 'Java',
-          category: 'dev',
-          tag: 'Lập trình',
-          icon: 'coffee',
-          accent: 'cyan',
-          desc: 'Lập trình hướng đối tượng (OOP) và thiết kế kiến trúc phần mềm bài bản.'
-        },
-        {
-          name: 'HTML / CSS / JS',
-          category: 'dev',
-          tag: 'Lập trình',
-          icon: 'globe',
-          accent: 'emerald',
-          desc: 'level 0.5.'
-        },
-        {
-          name: 'Đại số tuyến tính',
-          category: 'foundations',
-          tag: 'Nền tảng',
-          icon: 'sigma',
-          accent: 'cyan',
-          desc: 'level -10000.'
-        },
-        {
-          name: 'Mạng máy tính (Cisco Packet Tracer)',
-          category: 'foundations',
-          tag: 'Nền tảng',
-          icon: 'network',
-          accent: 'emerald',
-          desc: 'level gpt.'
-        },
-        {
-          name: 'VS Code & Visual Studio',
-          category: 'foundations',
-          tag: 'Công cụ',
-          icon: 'laptop',
-          accent: 'cyan',
-          desc: 'Main programming IDEs for C/C++, Python, and Java development.'
-        },
-        {
-          name: 'Git & GitHub',
-          category: 'foundations',
-          tag: 'Công cụ',
-          icon: 'git-branch',
-          accent: 'emerald',
-          desc: 'Quản lý phiên bản mã nguồn, làm việc nhóm và lưu trữ dự án cá nhân.'
-        }
-      ];
-
-      const skillsGrid = document.getElementById('skills-grid');
-      const filterBtns = document.querySelectorAll('.skill-filter-btn');
-
-      function renderSkills(filter = 'all') {
-        if (!skillsGrid) return;
-        const filtered = filter === 'all'
-          ? skillsData
-          : skillsData.filter((item) => item.category === filter);
-
-        skillsGrid.innerHTML = filtered.map((skill) => {
-          const isEmerald = skill.accent === 'emerald';
-          const iconBg = isEmerald
-            ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-            : 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400';
-          const hoverBorder = isEmerald
-            ? 'hover:border-emerald-500/40 hover:shadow-[0_0_25px_-8px_rgba(16,185,129,0.22)]'
-            : 'hover:border-cyan-500/40 hover:shadow-[0_0_25px_-8px_rgba(6,182,212,0.22)]';
-
-          return `
-            <div class="p-5 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-800/80 ${hoverBorder} transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-3.5">
-                  <div class="w-10 h-10 rounded-xl border ${iconBg} flex items-center justify-center">
-                    <i data-lucide="${skill.icon}" class="w-5 h-5"></i>
-                  </div>
-                  <span class="font-mono text-[11px] px-2.5 py-1 rounded-lg bg-slate-800/80 text-slate-400 border border-slate-700/60">
-                    ${skill.tag}
-                  </span>
-                </div>
-                <h3 class="font-bold text-base text-white group-hover:text-emerald-300 transition-colors mb-1.5">${skill.name}</h3>
-                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">${skill.desc}</p>
-              </div>
-            </div>
-          `;
-        }).join('');
-
-        if (window.lucide) {
-          lucide.createIcons();
-        }
-      }
-
-      // Bind Filter Clicks
-      filterBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const selected = btn.getAttribute('data-filter');
-
-          filterBtns.forEach((b) => {
-            b.className = 'skill-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-400 border border-transparent hover:text-slate-200 hover:bg-slate-800/70';
-          });
-          btn.className = 'skill-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.15)]';
-
-          renderSkills(selected);
-        });
-      });
-
-      // Initial render
-      renderSkills('all');
-
-      /* -------------------------------------------------------------------
-       * 5. INTERACTIVE MINI TERMINAL ENGINE
-       * ------------------------------------------------------------------- */
-      const terminalBody = document.getElementById('terminal-body');
-      const terminalOutput = document.getElementById('terminal-output');
-      const terminalForm = document.getElementById('terminal-form');
-      const terminalInput = document.getElementById('terminal-input');
-      const termChips = document.querySelectorAll('.term-chip');
-
-      const commandHistory = [];
-      let historyPointer = -1;
-
-      // Escape HTML to keep custom user input safe
-      function escapeHTML(str) {
-        return str.replace(/[&<>"']/g, (m) => ({
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#39;'
-        }[m]));
-      }
-
-      const terminalCommands = {
-        help: () => `
-          <div class="space-y-1 text-slate-300">
-            <div class="text-emerald-400 font-semibold mb-1">Danh sách lệnh khả dụng:</div>
-            <div><span class="text-cyan-300 inline-block w-24">whoami</span> — Thông tin tổng quan về Lê Hoàng Quân</div>
-            <div><span class="text-cyan-300 inline-block w-24">education</span> — Học vấn &amp; chuyên ngành Khoa học Máy tính</div>
-            <div><span class="text-cyan-300 inline-block w-24">skills</span> — Liệt kê Tech Stack, Nền tảng &amp; Công cụ</div>
-            <div><span class="text-cyan-300 inline-block w-24">hobbies</span> — Lập trình, phần cứng PC, Gaming &amp; Thể thao</div>
-            <div><span class="text-cyan-300 inline-block w-24">clear</span> — Xóa sạch màn hình terminal</div>
-          </div>
-        `,
-        whoami: () => `
-          <div class="space-y-1 text-slate-300 border-l-2 border-emerald-500/60 pl-3">
-            <div><span class="text-slate-500">Name     :</span> <span class="text-white font-semibold">Lê Hoàng Quân</span></div>
-            <div><span class="text-slate-500">Major    :</span> <span class="text-emerald-300">Khoa học Máy tính (Computer Science) @ TDTU</span></div>
-            <div><span class="text-slate-500">Location :</span> TP. Hồ Chí Minh, Việt Nam</div>
-            <div><span class="text-slate-500">Focus    :</span> <span class="text-cyan-300">Thuật toán, cấu trúc dữ liệu &amp; phát triển phần mềm</span></div>
-          </div>
-        `,
-        education: () => `
-          <div class="space-y-1.5 text-slate-300">
-            <div class="text-emerald-400 font-semibold">[2026 – Hiện tại] Trường Đại học Tôn Đức Thắng (TDTU)</div>
-            <div>• Chuyên ngành: <span class="text-white">Khoa học Máy tính (Computer Science)</span></div>
-            <div>• Trọng tâm: Thuật toán, Cấu trúc dữ liệu, C/C++ (STL), Python, Java &amp; Đại số tuyến tính.</div>
-            <div class="text-cyan-300 pt-1">[04/2025] Hoàn thành chứng chỉ IELTS (IDP Vietnam).</div>
-            <div class="text-slate-400">[Trước 2026] Ăn, ngủ, ải đía, cơm ngày 3 cử.</div>
-          </div>
-        `,
-        skills: () => `
-          <div class="space-y-1.5 text-slate-300">
-            <div><span class="text-emerald-400">[Languages]  </span> C, C++ (STL), Python (NumPy), Java, HTML/CSS/JavaScript</div>
-            <div><span class="text-cyan-400">[Foundations]</span> Đại số tuyến tính, Mạng máy tính (Cisco Packet Tracer)</div>
-            <div><span class="text-amber-300">[Tools]      </span> VS Code, Visual Studio, Git &amp; GitHub</div>
-          </div>
-        `,
-        hobbies: () => `
-          <div class="space-y-1.5 text-slate-300">
-            <div><span class="text-emerald-400">▸ Tech &amp; PC :</span> Lập trình, tự build &amp; nâng cấp linh kiện phần cứng PC.</div>
-            <div><span class="text-cyan-400">▸ Gaming :</span> TFT, League of Legends, Counter-Strike 2.</div>
-            <div><span class="text-amber-400">▸ Sports :</span> Basketball, Badminton.</div>
-          </div>
-        `
-      };
-
-      function executeCommand(rawCmd) {
-        const cmd = rawCmd.trim().toLowerCase();
-        if (!cmd) return;
-
-        commandHistory.unshift(rawCmd.trim());
-        historyPointer = -1;
-
-        if (cmd === 'clear') {
-          terminalOutput.innerHTML = '';
-          return;
-        }
-
-        // Render echoed command line
-        const entry = document.createElement('div');
-        entry.className = 'space-y-1.5';
-
-        let responseHTML = '';
-        if (terminalCommands[cmd]) {
-          responseHTML = terminalCommands[cmd]();
-        } else {
-          responseHTML = `<div class="text-rose-400">zsh: command not found: ${escapeHTML(cmd)}. Gõ <span class="text-cyan-300">'help'</span> để xem danh sách lệnh hợp lệ.</div>`;
-        }
-
-        entry.innerHTML = `
-          <div class="flex items-center gap-2">
-            <span class="text-emerald-400 font-semibold">dmir3r_</span><span class="text-slate-500">:</span><span class="text-cyan-400">~</span><span class="text-slate-400">$</span>
-            <span class="text-slate-100">${escapeHTML(rawCmd.trim())}</span>
-          </div>
-          <div class="pl-1">${responseHTML}</div>
-        `;
-
-        terminalOutput.appendChild(entry);
-        terminalBody.scrollTop = terminalBody.scrollHeight;
-      }
-
-      if (terminalForm && terminalInput) {
-        terminalForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const val = terminalInput.value;
-          terminalInput.value = '';
-          executeCommand(val);
-        });
-
-        // Keyboard Up/Down history navigation
-        terminalInput.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            if (historyPointer < commandHistory.length - 1) {
-              historyPointer++;
-              terminalInput.value = commandHistory[historyPointer];
-            }
-          } else if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            if (historyPointer > 0) {
-              historyPointer--;
-              terminalInput.value = commandHistory[historyPointer];
-            } else {
-              historyPointer = -1;
-              terminalInput.value = '';
-            }
-          }
-        });
-
-        // Focus input when clicking anywhere inside terminal body
-        terminalBody.addEventListener('click', () => {
-          terminalInput.focus();
-        });
-      }
-
-      // Quick command chip clicks
-      termChips.forEach((chip) => {
-        chip.addEventListener('click', () => {
-          const cmd = chip.getAttribute('data-cmd');
-          executeCommand(cmd);
-          if (terminalInput) terminalInput.focus();
-        });
-      });
-
-      /* -------------------------------------------------------------------
-       * 6. COPY EMAIL WITH TOAST NOTIFICATION (iFrame-safe execCommand)
-       * ------------------------------------------------------------------- */
-      const copyEmailBtn = document.getElementById('copy-email-btn');
-      const emailTextEl = document.getElementById('email-text');
-      const toastEl = document.getElementById('toast');
-      const toastMsgEl = document.getElementById('toast-message');
-      let toastTimeout = null;
-
-      function showToast(message) {
-        if (!toastEl || !toastMsgEl) return;
-        toastMsgEl.textContent = message;
-        toastEl.classList.remove('opacity-0', 'translate-y-4');
-        toastEl.classList.add('opacity-100', 'translate-y-0');
-
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => {
-          toastEl.classList.remove('opacity-100', 'translate-y-0');
-          toastEl.classList.add('opacity-0', 'translate-y-4');
-        }, 2800);
-      }
-
-      function copyEmailToClipboard(e) {
-        if (e) e.preventDefault();
-        const email = emailTextEl ? emailTextEl.textContent.trim() : 'lehoangquan.cs@gmail.com';
-
-        try {
-          const tempInput = document.createElement('textarea');
-          tempInput.value = email;
-          tempInput.setAttribute('readonly', '');
-          tempInput.style.position = 'fixed';
-          tempInput.style.opacity = '0';
-          document.body.appendChild(tempInput);
-          tempInput.select();
-          document.execCommand('copy');
-          document.body.removeChild(tempInput);
-          showToast('Đã sao chép email!');
-        } catch (err) {
-          showToast('Không thể sao chép tự động, vui lòng bôi đen email.');
-        }
-      }
-
-      if (copyEmailBtn) copyEmailBtn.addEventListener('click', copyEmailToClipboard);
-
-      /* -------------------------------------------------------------------
-       * 7. SCROLL REVEAL ANIMATION (IntersectionObserver)
-       * ------------------------------------------------------------------- */
-      const revealEls = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.remove('opacity-0', 'translate-y-6');
-                entry.target.classList.add('opacity-100', 'translate-y-0');
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12 }
-        );
-
-        revealEls.forEach((el) => observer.observe(el));
-      } else {
-        // Fallback for older browsers
-        revealEls.forEach((el) => {
-          el.classList.remove('opacity-0', 'translate-y-6');
-          el.classList.add('opacity-100', 'translate-y-0');
-        });
-      }
-    });
-  </script>
+  <!-- Projects Data & Application Script -->
+  <script src="./projects.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
