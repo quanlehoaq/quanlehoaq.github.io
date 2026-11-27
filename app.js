@@ -43,9 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // Smooth handwritten easing: gentle start, natural pen sweep, graceful finish
-  function easeInOutCubic(t) {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  // Two-phase C1-continuous signature easing:
+  // Phase 1 (first ~52% of stroke, big sweeping curve up to just before the middle loop): 2030ms
+  // Phase 2 (remaining ~48%, middle loop + tail whip): 690ms
+  function evaluateSignatureProgress(elapsed, phase1Ms, phase2Ms, splitRatio) {
+    const m1 = 1.15; // Smooth exit slope at the end of Phase 1 (no stutter)
+    if (elapsed <= phase1Ms) {
+      const u = Math.max(0, Math.min(1, elapsed / phase1Ms));
+      const h1 = (m1 - 2) * u * u * u + (3 - m1) * u * u;
+      return splitRatio * h1;
+    }
+    const w = Math.max(0, Math.min(1, (elapsed - phase1Ms) / phase2Ms));
+    const vJoin = (m1 * splitRatio) / phase1Ms;
+    const m2 = Math.min(2.8, (vJoin * phase2Ms) / (1 - splitRatio));
+    const h2 = (m2 - 2) * w * w * w + (3 - 2 * m2) * w * w + m2 * w;
+    return splitRatio + (1 - splitRatio) * h2;
   }
 
   function playSignatureIntro() {
@@ -62,7 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
     sigPath.style.strokeDasharray = `${totalLen}`;
     sigPath.style.strokeDashoffset = `${totalLen}`;
 
-    const drawDuration = 2900; // ~3s smooth handwriting draw
+    const phase1Duration = 2030; // 2.03s for the opening sweeping stroke
+    const phase2Duration = 690;  // 0.69s for the rest (loop + tail sweep)
+    const totalDuration = phase1Duration + phase2Duration;
+    const splitRatio = 0.52;     // ~760 / 1460 of SVG path length (exact pen dot in preview)
     const startDelay = 160;
     let startTime = null;
     let captionShown = false;
@@ -70,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateStroke(timestamp) {
       if (startTime === null) startTime = timestamp;
       const elapsed = timestamp - startTime;
-      const raw = Math.min(1, elapsed / drawDuration);
-      const eased = easeInOutCubic(raw);
-      const drawnLen = totalLen * eased;
+      const raw = Math.min(1, elapsed / totalDuration);
+      const progress = evaluateSignatureProgress(elapsed, phase1Duration, phase2Duration, splitRatio);
+      const drawnLen = totalLen * progress;
 
       sigPath.style.strokeDashoffset = `${totalLen - drawnLen}`;
 
@@ -83,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sigPen.setAttribute('opacity', raw > 0.96 ? String((1 - raw) / 0.04) : '0.95');
       }
 
-      if (!captionShown && raw >= 0.72) {
+      if (!captionShown && elapsed >= phase1Duration * 0.92) {
         captionShown = true;
         sigCaption?.classList.add('is-visible');
       }
