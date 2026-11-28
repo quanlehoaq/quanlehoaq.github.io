@@ -370,13 +370,13 @@ document.addEventListener('DOMContentLoaded', () => {
     vi: [
       'Sinh viên Khoa học Máy tính @ TDTU',
       'DIY PC Hardware & Tech Enthusiast',
-      'Bôn lờ 3x3 số 1 TDT 🏀',
+      'Bôn lờ số 1 TDT 🏀',
       'Za trưởng top 2 không ai top 1',
     ],
     en: [
       'Computer Science Student @ TDTU',
       'DIY PC Builder & Tech Enthusiast',
-      '3x3 Basketball Hoops Player 🏀',
+      'Basketball Hoops Player 🏀',
       'Building Clean Interactive Web Apps',
     ],
   };
