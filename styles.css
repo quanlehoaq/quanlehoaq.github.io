@@ -406,6 +406,55 @@ html[data-theme="light"] .nav-link.active {
   border-color: rgba(16, 185, 129, 0.55);
 }
 
+/* Selected Works Vertical Project Rows */
+.project-row {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.28s ease,
+              box-shadow 0.28s ease;
+}
+
+.project-row:hover {
+  box-shadow: 0 24px 55px -24px rgba(0, 0, 0, 0.8), 0 0 32px -14px rgba(16, 185, 129, 0.28);
+}
+
+html[data-theme="light"] .project-row:hover {
+  box-shadow: 0 20px 44px -22px rgba(15, 23, 42, 0.16), 0 0 24px -10px rgba(5, 150, 105, 0.22);
+}
+
+.project-row.is-highlighted {
+  border-color: rgba(16, 185, 129, 0.75);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25), 0 20px 50px -20px rgba(16, 185, 129, 0.35);
+}
+
+.project-arrow-btn {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-row:hover .project-arrow-btn {
+  background-color: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.7);
+  color: #34d399;
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.32);
+}
+
+.project-row:hover .project-arrow-btn:hover {
+  background-color: #10b981;
+  border-color: #34d399;
+  color: #020617;
+  transform: scale(1.06);
+}
+
+html[data-theme="light"] .project-row:hover .project-arrow-btn {
+  background-color: rgba(5, 150, 105, 0.14);
+  border-color: rgba(5, 150, 105, 0.65);
+  color: #047857;
+}
+
+html[data-theme="light"] .project-row:hover .project-arrow-btn:hover {
+  background-color: #059669;
+  color: #ffffff;
+}
+
 /* Reduced Motion Respect */
 @media (prefers-reduced-motion: reduce) {
   .reveal-section {

@@ -832,9 +832,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ------------------------------------------------------------------------
-   * 10. SIMPLE PROJECTS RENDERER (DATA LIVES IN projects.js)
+   * 10. SELECTED WORKS VERTICAL SHOWCASE RENDERER (DATA LIVES IN projects.js)
    * ------------------------------------------------------------------------ */
   const projectsGrid = document.getElementById('projects-grid');
+  const projectsRangeEl = document.getElementById('projects-range');
+  const projectsQuickNav = document.getElementById('projects-quick-nav');
+  const defaultProjectIcons = ['globe', 'sparkles', 'network', 'terminal', 'cpu', 'folder-git-2'];
 
   function getProjectsList() {
     return Array.isArray(window.PROJECTS) ? window.PROJECTS : [];
@@ -845,13 +848,46 @@ document.addEventListener('DOMContentLoaded', () => {
     return typeof val === 'string' ? val : val[currentLang] || val.vi || val.en || '';
   }
 
+  function safeHref(url) {
+    if (typeof url !== 'string') return '';
+    const trimmed = url.trim();
+    if (!trimmed) return '';
+    return /^https?:\/\//i.test(trimmed) ? escapeHTML(trimmed) : '';
+  }
+
   function renderProjects() {
     if (!projectsGrid) return;
     const list = getProjectsList();
 
+    if (projectsRangeEl) {
+      projectsRangeEl.textContent = list.length
+        ? `01 — ${String(list.length).padStart(2, '0')}`
+        : '00 — 00';
+    }
+
+    if (projectsQuickNav) {
+      projectsQuickNav.innerHTML = list
+        .map((p, idx) => {
+          const icon = escapeHTML(p.icon || defaultProjectIcons[idx % defaultProjectIcons.length]);
+          const title = escapeHTML(resolveText(p.title));
+          return `
+            <button
+              type="button"
+              data-project-jump="project-row-${idx}"
+              title="${title}"
+              aria-label="${title}"
+              class="w-7 h-7 rounded-lg surface-elevated border flex items-center justify-center text-muted-custom hover:text-emerald-400 hover:border-emerald-500/50 transition-all"
+            >
+              <i data-lucide="${icon}" class="w-3.5 h-3.5"></i>
+            </button>
+          `;
+        })
+        .join('');
+    }
+
     if (list.length === 0) {
       projectsGrid.innerHTML = `
-        <div class="md:col-span-2 surface-card border rounded-3xl p-8 text-center font-mono text-sm text-muted-custom">
+        <div class="surface-card border rounded-3xl p-8 text-center font-mono text-sm text-muted-custom">
           Chưa có dự án nào — mở <span class="text-emerald-400">projects.js</span> để thêm dự án đầu tiên của bạn.
         </div>
       `;
@@ -864,49 +900,100 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = escapeHTML(resolveText(p.title));
         const desc = escapeHTML(resolveText(p.desc));
         const status = escapeHTML(p.status || 'Project');
+        const category = escapeHTML(resolveText(p.category) || p.status || 'PROJECT');
+        const dateStr = p.date ? escapeHTML(String(p.date)) : '';
+        const icon = escapeHTML(p.icon || defaultProjectIcons[idx % defaultProjectIcons.length]);
         const tags = Array.isArray(p.tags) ? p.tags : [];
 
-        const liveLink = p.liveUrl
-          ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-medium surface-elevated border text-emerald-400 hover:border-emerald-400 transition-colors">
-               <span>Live</span>
-               <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        const liveHref = safeHref(p.liveUrl);
+        const downloadHref = safeHref(p.downloadUrl);
+        const githubHref = safeHref(p.githubUrl);
+        const primaryHref = liveHref || downloadHref || githubHref;
+
+        const isLive = String(p.status || '').toLowerCase() === 'live';
+        const statusBadgeStyle = isLive
+          ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/40'
+          : 'bg-cyan-500/15 text-cyan-400 border-cyan-500/35';
+
+        const downloadLabelText = escapeHTML(
+          resolveText(p.downloadLabel) || (currentLang === 'en' ? 'Download .exe' : 'Tải .exe')
+        );
+        const downloadLink = downloadHref
+          ? `<a href="${downloadHref}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-mono font-semibold bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 transition-all">
+               <i data-lucide="download" class="w-3 h-3"></i>
+               <span>${downloadLabelText}</span>
              </a>`
           : '';
 
-        const githubLink = p.githubUrl
-          ? `<a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono text-muted-custom hover:text-heading transition-colors">
-               <i data-lucide="github" class="w-3.5 h-3.5"></i>
-               <span>GitHub</span>
+        const shaBtn = p.sha256
+          ? `<button type="button" data-sha="${escapeHTML(p.sha256)}" title="SHA-256: ${escapeHTML(p.sha256)}" class="copy-sha-btn inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-mono surface-elevated border text-muted-custom hover:text-cyan-400 hover:border-cyan-400/50 transition-colors">
+               <i data-lucide="shield-check" class="w-3 h-3 text-cyan-400"></i>
+               <span>SHA-256</span>
+             </button>`
+          : '';
+
+        const secondaryGithub =
+          githubHref && primaryHref !== githubHref
+            ? `<a href="${githubHref}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono surface-elevated border text-muted-custom hover:text-heading hover:border-emerald-500/40 transition-colors">
+                 <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                 <span>GitHub</span>
+               </a>`
+            : '';
+
+        const titleMarkup = primaryHref
+          ? `<a href="${primaryHref}" target="_blank" rel="noopener noreferrer" class="text-2xl sm:text-3xl lg:text-[2.1rem] font-extrabold tracking-tight leading-tight text-heading group-hover:text-emerald-400 transition-colors">
+               ${title}
+             </a>`
+          : `<h3 class="text-2xl sm:text-3xl lg:text-[2.1rem] font-extrabold tracking-tight leading-tight text-heading group-hover:text-emerald-400 transition-colors">
+               ${title}
+             </h3>`;
+
+        const arrowAction = primaryHref
+          ? `<a href="${primaryHref}" target="_blank" rel="noopener noreferrer" aria-label="${title}" class="project-arrow-btn w-11 h-11 sm:w-12 sm:h-12 rounded-full border surface-elevated flex items-center justify-center text-muted-custom shrink-0">
+               <i data-lucide="arrow-up-right" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
              </a>`
           : '';
 
         return `
-          <article class="spotlight-card surface-card border p-6 rounded-3xl flex flex-col justify-between group">
-            <div>
-              <div class="flex items-center justify-between gap-3 mb-4">
-                <span class="font-mono text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-lg">
-                  ${num}
-                </span>
-                <span class="font-mono text-[11px] px-2.5 py-1 rounded-full surface-elevated border text-cyan-400">
-                  ${status}
-                </span>
-              </div>
-              <h3 class="text-lg font-bold text-heading group-hover:text-emerald-400 transition-colors mb-2">${title}</h3>
-              <p class="text-sm text-muted-custom leading-relaxed mb-5">${desc}</p>
-            </div>
+          <article id="project-row-${idx}" class="project-row spotlight-card surface-card border rounded-3xl px-5 py-6 sm:px-8 sm:py-8 group">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-10">
 
-            <div class="space-y-4">
-              <div class="flex flex-wrap gap-1.5">
-                ${tags.map((t) => `<span class="px-2.5 py-1 rounded-lg font-mono text-[11px] surface-elevated border text-body">${escapeHTML(t)}</span>`).join('')}
+              <!-- Left: Meta + Icon & Big Title + Tags -->
+              <div class="min-w-0 flex-1 space-y-3.5">
+                <div class="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-wider">
+                  <span class="font-bold text-emerald-400">${num}</span>
+                  <span class="text-faint-custom">·</span>
+                  <span class="text-muted-custom">${category}</span>
+                  ${dateStr ? `<span class="text-faint-custom">·</span><span class="text-faint-custom">${dateStr}</span>` : ''}
+                  <span class="ml-1 inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold border ${statusBadgeStyle}">
+                    <span class="w-1.5 h-1.5 rounded-full ${isLive ? 'bg-emerald-400 animate-pulse' : 'bg-cyan-400'}"></span>
+                    ${status}
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <div class="project-icon-tile w-12 h-12 sm:w-14 sm:h-14 rounded-2xl surface-elevated border flex items-center justify-center text-emerald-400 shrink-0 transition-all duration-300 group-hover:border-emerald-400/60 group-hover:scale-105">
+                    <i data-lucide="${icon}" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+                  </div>
+                  <div class="min-w-0">
+                    ${titleMarkup}
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                  ${tags.map((t) => `<span class="px-2.5 py-1 rounded-lg font-mono text-[11px] surface-elevated border text-muted-custom">${escapeHTML(t)}</span>`).join('')}
+                  ${downloadLink}${shaBtn}${secondaryGithub}
+                </div>
               </div>
-              ${
-                liveLink || githubLink
-                  ? `<div class="flex items-center justify-between gap-2 pt-3 border-t border-subtle">
-                       <div class="flex items-center gap-2">${liveLink}</div>
-                       <div>${githubLink}</div>
-                     </div>`
-                  : ''
-              }
+
+              <!-- Right: Description + Circular Arrow CTA -->
+              <div class="flex items-center justify-between lg:justify-end gap-5 sm:gap-7 lg:max-w-md shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-subtle">
+                <p class="text-xs sm:text-sm text-muted-custom leading-relaxed lg:text-right max-w-sm">
+                  ${desc}
+                </p>
+                ${arrowAction}
+              </div>
+
             </div>
           </article>
         `;
@@ -915,6 +1002,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     safeCreateIcons();
   }
+
+  projectsQuickNav?.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-project-jump]');
+    if (!btn) return;
+    const row = document.getElementById(btn.getAttribute('data-project-jump'));
+    if (!row) return;
+    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    row.classList.add('is-highlighted');
+    setTimeout(() => row.classList.remove('is-highlighted'), 1100);
+  });
+
+  projectsGrid?.addEventListener('click', async (e) => {
+    const btn = e.target.closest('.copy-sha-btn');
+    if (!btn) return;
+    const sha = btn.getAttribute('data-sha');
+    if (!sha) return;
+    try {
+      await navigator.clipboard.writeText(sha);
+      showToast(currentLang === 'en' ? 'Copied SHA-256 checksum!' : 'Đã sao chép mã kiểm tra SHA-256!');
+    } catch {
+      showToast(`SHA-256: ${sha.slice(0, 16)}...`);
+    }
+  });
 
   /* ------------------------------------------------------------------------
    * 12. SUPERCHARGED MINI TERMINAL (LHQ-OS v3.0) + MATRIX EASTER EGG

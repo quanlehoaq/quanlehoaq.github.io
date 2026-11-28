@@ -561,15 +561,26 @@
     <!-- 3. PROJECTS (CHỈNH SỬA & THÊM DỰ ÁN DỄ DÀNG TRONG projects.js)      -->
     <!-- =================================================================== -->
     <section id="projects" class="scroll-mt-24 reveal-section">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
-        <div>
-          <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 03. Projects</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-heading mt-1" data-i18n="projects.title">Dự án cá nhân</h2>
+      <div class="mb-8 space-y-2">
+        <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">// 03. Projects</span>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-heading flex items-end gap-1.5 shrink-0">
+            <span data-i18n="projects.title">Dự án cá nhân</span>
+            <span class="inline-block w-3.5 sm:w-4 h-1 bg-emerald-400 rounded-full mb-1 shadow-[0_0_12px_rgba(16,185,129,0.75)]"></span>
+          </h2>
+
+          <div class="hidden md:block flex-1 h-px bg-gradient-to-r from-emerald-500/75 via-emerald-500/20 to-transparent mx-4"></div>
+
+          <div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2 shrink-0">
+            <span id="projects-range" class="font-mono text-[11px] font-semibold tracking-widest text-emerald-400">01 — 03</span>
+            <div id="projects-quick-nav" class="flex items-center gap-1.5" aria-label="Chọn nhanh dự án">
+              <!-- Populated by JS -->
+            </div>
+          </div>
         </div>
-        <p class="font-mono text-xs text-faint-custom" data-i18n="projects.subtitle">Quản lý danh sách dự án trong projects.js</p>
       </div>
 
-      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div id="projects-grid" class="flex flex-col gap-4">
         <!-- Rendered automatically from projects.js -->
       </div>
     </section>
